@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ author.fullname }} — цитати</title>
+  </head>
+  <body>
+    <h1>{{ author.fullname }}</h1>
+
+    {% if author.born_date %}
+    <p><strong>Дата народження:</strong> {{ author.born_date }}</p>
+    {% endif %} {% if author.born_location %}
+    <p><strong>Місце народження:</strong> {{ author.born_location }}</p>
+    {% endif %} {% if author.description %}
+    <p><strong>Про автора:</strong> {{ author.description }}</p>
+    {% endif %}
+
+    <h2>Цитати автора:</h2>
+    {% if quotes %}
+    <ul>
+      {% for quote in quotes %}
+      <li>“{{ quote.quote }}”</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Цитат цього автора поки немає.</p>
+    {% endif %}
+
+    <p><a href="{% url 'quotes:root' %}">Повернутися на головну</a></p>
+  </body>
+</html>
